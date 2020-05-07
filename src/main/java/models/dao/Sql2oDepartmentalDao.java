@@ -37,10 +37,10 @@ public class Sql2oDepartmentalDao implements DepartmentalNewsDao {
     }
 
     @Override
-    public void FindById(int id) {
+    public Departmental FindById(int id) {
         String sql = "SELECT * FROM departmentalNews WHERE id = :id ";
         try( Connection con = sql2o.open()){
-            con.createQuery(sql)
+            return con.createQuery(sql)
                     .addParameter("id",id)
                     .executeAndFetchFirst(Departmental.class);
         }

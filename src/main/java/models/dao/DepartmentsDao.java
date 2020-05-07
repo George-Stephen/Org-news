@@ -9,7 +9,7 @@ public interface DepartmentsDao {
     void add (Departments departments);
     // list all departments
     List<Departments>all();
-    void FindById(int id);
+    Departments FindById(int id);
     // update departments
     void update(int id, String newName,String newDescription,int newEmployees);
     // delete

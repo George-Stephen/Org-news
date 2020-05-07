@@ -9,7 +9,7 @@ public interface DepartmentalNewsDao {
     void add(Departmental departmental);
     //list all news
     List<Departmental>all();
-    void FindById(int id);
+    Departmental FindById(int id);
     // delete
     void DeleteById(int id);
     void clearAll();

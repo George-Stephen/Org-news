@@ -38,10 +38,10 @@ public class Sql2oNewsDao implements newsDao {
     }
 
     @Override
-    public void FindById(int id) {
+    public Connection FindById(int id) {
         String sql = "SELECT * FROM news WHERE id = :id";
         try(Connection con = sql2o.open()){
-            con.createQuery(sql)
+             return con.createQuery(sql)
                     .addParameter("id",id)
                     .executeUpdate();
         }
