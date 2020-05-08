@@ -11,7 +11,7 @@ public interface newsDao {
     void add (General general);
     // list all news
     List<General>all();
-    Connection FindById(int id);
+    General FindById(int id);
     // delete news
     void DeleteById(int id);
     void clearAll();

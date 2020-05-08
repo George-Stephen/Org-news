@@ -15,10 +15,10 @@ public class Sql2oDepartmentalDao implements DepartmentalNewsDao {
 
     @Override
     public void add(Departmental departmental) {
-        String sql = "INSERT INTO departmentalNews ( news,author,departmentId) VALUES (:news,:author,:departmentId)";
+        String sql = "INSERT INTO departmental( news,author,departmentid) VALUES (:news,:author,:departmentId)";
         try(Connection con = sql2o.open()){
             int id =(int)
-            con.createQuery(sql)
+            con.createQuery(sql,true)
                     .bind(departmental)
                     .executeUpdate()
                     .getKey();
@@ -29,7 +29,7 @@ public class Sql2oDepartmentalDao implements DepartmentalNewsDao {
 
     @Override
     public List<Departmental> all() {
-        String sql = "SELECT * FROM  departmentalNews ";
+        String sql = "SELECT * FROM  departmental ";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .executeAndFetch(Departmental.class);
@@ -38,7 +38,7 @@ public class Sql2oDepartmentalDao implements DepartmentalNewsDao {
 
     @Override
     public Departmental FindById(int id) {
-        String sql = "SELECT * FROM departmentalNews WHERE id = :id ";
+        String sql = "SELECT * FROM departmental WHERE id = :id ";
         try( Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("id",id)
@@ -49,7 +49,7 @@ public class Sql2oDepartmentalDao implements DepartmentalNewsDao {
 
     @Override
     public void DeleteById(int id) {
-        String sql = "DELETE FROM  departmentalNews WHERE id = :id";
+        String sql = "DELETE FROM  departmental WHERE id = :id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("id",id)
@@ -60,7 +60,7 @@ public class Sql2oDepartmentalDao implements DepartmentalNewsDao {
 
     @Override
     public void clearAll() {
-        String sql = "DELETE FROM  departmentalNews";
+        String sql = "DELETE FROM  departmental";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .executeUpdate();
