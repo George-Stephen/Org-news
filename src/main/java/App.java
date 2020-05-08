@@ -4,6 +4,10 @@ import models.*;
 import models.dao.*;
 import  exceptions.*;
 import org.sql2o.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static spark.Spark.*;
 
 public class App {
@@ -97,6 +101,16 @@ public class App {
         });
 
         // filters
+        exception(ApiException.class, (exc, req, res) -> {
+            ApiException err = (ApiException) exc;
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", err.getStatus());
+            jsonMap.put("errorMessage", err.getMessage());
+            res.type("application/json"); //after does not run in case of an exception.
+            res.status(err.getStatus()); //set the status
+            res.body(gson.toJson(jsonMap));  //set the output.
+        });
+
         after((request, response) -> {
            response.type("application/json");
         });
