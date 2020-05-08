@@ -2,6 +2,7 @@ import com.google.*;
 import com.google.gson.Gson;
 import models.*;
 import models.dao.*;
+import  exceptions.*;
 import org.sql2o.*;
 import static spark.Spark.*;
 
@@ -34,7 +35,11 @@ public class App {
         get("user/:id", "application/json", (request, response) -> {
             response.type("application/json");
             int userId = Integer.parseInt(request.params("id"));
-            return gson.toJson(userDao.FindById(userId));
+            User user = userDao.FindById(userId);
+            if( user == null){
+                throw new ApiException(404,String.format("No user with the id: \"%s\" exists",request.params("id")));
+            }
+            return gson.toJson(user);
         });
         // departments
         post("/department/new","application/json",(request, response) -> {
@@ -48,7 +53,11 @@ public class App {
         });
         get("/departments/:id","application/json",(request, response) -> {
             int depId = Integer.parseInt(request.params("id"));
-            return gson.toJson(departmentDao.FindById(depId));
+            Department department = departmentDao.FindById(depId);
+            if( department == null){
+                throw new ApiException(404,String.format("No department with the id: \"%s\" exists",request.params("id")));
+            }
+            return gson.toJson(department);
         });
         // general news
         post("/news/new","application/json",(request, response) -> {
@@ -62,7 +71,11 @@ public class App {
         });
         get("/news/:id","application/json",(request, response) -> {
             int newsId = Integer.parseInt(request.params("id"));
-            return gson.toJson(newsDao.FindById(newsId));
+            General general =newsDao.FindById(newsId);
+            if( general == null){
+                throw new ApiException(404,String.format("No general news with the id: \"%s\" exists",request.params("id")));
+            }
+            return gson.toJson(general);
         });
         // departments news
         post("/special/news/new","application/json",(request, response) -> {
@@ -76,7 +89,11 @@ public class App {
         });
         get("/special/news/:id","application/json",(request, response) -> {
             int DepId = Integer.parseInt(request.params("id"));
-            return gson.toJson(departmentalDao.FindById(DepId));
+            Departmental departmental =departmentalDao.FindById(DepId);
+            if( departmental == null){
+                throw new ApiException(404,String.format("No departmental news  with the id: \"%s\" exists",request.params("id")));
+            }
+            return gson.toJson(departmental);
         });
 
         // filters
