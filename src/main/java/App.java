@@ -15,14 +15,11 @@ public class App {
         Connection con;
         Gson gson = new Gson();
 
-        String connectionString = "jdbc:h2:~/Org_news.db;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
-
-        userDao = new Sql2oUserDao(sql2o);
-        departmentalDao = new Sql2oDepartmentalDao(sql2o);
-        departmentalDao = new Sql2oDepartmentalDao(sql2o);
-        newsDao = new Sql2oNewsDao(sql2o);
-        con = sql2o.open();
+        userDao = new Sql2oUserDao(DB.sql2o);
+        departmentalDao = new Sql2oDepartmentalDao(DB.sql2o);
+        departmentalDao = new Sql2oDepartmentalDao(DB.sql2o);
+        newsDao = new Sql2oNewsDao(DB.sql2o);
+        con = DB.sql2o.open();
 
         // Users
         post("/users/new", "application/json", (request, response) -> {

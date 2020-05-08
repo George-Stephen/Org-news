@@ -6,17 +6,15 @@ public class User{
   private int Age;
   private String email;
   private String phone;
-  private String Position;
-  private String Role;
+  private String position;
   private int departmentsId;
 
-    public User(String name, int age, String email, String phone, String position, String role, int departmentsId) {
+    public User(String name, int age, String email, String phone, String position, int departmentsId) {
         this.name = name;
         Age = age;
         this.email = email;
         this.phone = phone;
-        Position = position;
-        Role = role;
+        this.position = position;
         this.departmentsId = departmentsId;
     }
 
@@ -61,20 +59,13 @@ public class User{
     }
 
     public String getPosition() {
-        return Position;
+        return position;
     }
 
     public void setPosition(String position) {
-        Position = position;
+        position = position;
     }
 
-    public String getRole() {
-        return Role;
-    }
-
-    public void setRole(String role) {
-        Role = role;
-    }
 
     public int getDepartmentsId() {
         return departmentsId;

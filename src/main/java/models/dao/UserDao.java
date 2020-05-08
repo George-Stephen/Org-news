@@ -11,7 +11,7 @@ public interface UserDao {
     List<User>all();
     User FindById(int id);
     // update user
-    void update(int id,String newName,int newAge,String newPhone,String newEmail,String newPosition,String newRoles,int newDepartmentId);
+    void update(int id,String newName,int newAge,String newPhone,String newEmail,String newPosition,int newDepartmentId);
     // delete user
     void DeleteByUser(int id);
     void clearAll();
