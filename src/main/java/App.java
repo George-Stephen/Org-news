@@ -57,6 +57,24 @@ public class App {
             response.type("application/json");
             return gson.toJson(departmentDao.FindById(depId));
         });
+        // general news
+        post("/news/new","application/json",(request, response) -> {
+           General general = gson.fromJson(request.body(),General.class);
+           newsDao.add(general);
+           response.status(201);
+           response.type("application/json");
+           return  gson.toJson(general);
+        });
+        get("/news","application/json",(request, response) -> {
+            response.type("application/json");
+            return gson.toJson(newsDao.all());
+        });
+        get("/news/:id","application/json",(request, response) -> {
+            response.type("application/json");
+            int newsId = Integer.parseInt(request.params("id"));
+            response.type("application/json");
+            return gson.toJson(newsDao.FindById(newsId));
+        });
 
     }
 }
