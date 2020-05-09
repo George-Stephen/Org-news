@@ -8,6 +8,8 @@ import org.sql2o.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
 
@@ -28,7 +30,7 @@ public class App {
         con = DB.sql2o.open();
 
         // Users
-/*        post("/users/new", "application/json", (request, response) -> {
+       post("/users/new", "application/json", (request, response) -> {
             User user = gson.fromJson(request.body(), User.class);
             userDao.add(user);
             response.status(201);
@@ -131,6 +133,91 @@ public class App {
         after((request, response) -> {
            response.type("application/json");
         });
-*/
+
+
+get("/",(request, response) -> {
+    Map<Object,String>model = new HashMap<>();
+    return new ModelAndView("model","index.hbs");
+},new HandlebarsTemplateEngine());
+// all forms displayed
+        get("/employees/new",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model,"employee-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("departments/new",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "dep-form.hbs");
+        },new HandlebarsTemplateEngine());
+        get("/news/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model,"gen-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/special/new",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model,"special-form.hbs");
+        }, new HandlebarsTemplateEngine());
+        // post all data
+        post("/employees",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            String email = request.queryParams("email");
+            String phone = request.queryParams("phone");
+            String position = request.queryParams("position");
+            int DepId = Integer.parseInt(request.queryParams("DepId"));
+            User user = new User(name,email,phone,position,DepId);
+            userDao.add(user);
+            return new ModelAndView(model,"employees.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/departments", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            String story = request.queryParams("story");
+            int number = Integer.parseInt(request.queryParams("number"));
+            Department department = new Department(name,story,number);
+            departmentDao.add(department);
+            return new ModelAndView(model,"departments.hbs");
+        }, new HandlebarsTemplateEngine());
+        post("/news",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String author = request.queryParams("author");
+            String news = request.queryParams("news");
+            General general = new General(news,author);
+            newsDao.add(general);
+            return new ModelAndView(model,"news.hbs");
+        },new HandlebarsTemplateEngine());
+        post("/special",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String author = request.queryParams("author");
+            String news = request.queryParams("news");
+            int DepId = Integer.parseInt(request.queryParams("depId"));
+            Departmental departmental = new Departmental(news,author,DepId);
+            departmentalDao.add(departmental);
+            return new ModelAndView(model,"special.hbs");
+        },new HandlebarsTemplateEngine());
+        // display all data
+        get("/departments",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Department>departments= departmentDao.all();
+            model.put("department",departments);
+            return new ModelAndView(model,"departments.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/employees", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<User> user= userDao.all();
+            model.put("users",user);
+            return new ModelAndView(model, "employees.hbs");
+        }, new HandlebarsTemplateEngine());
+        get("/news", (request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            List<General>news = newsDao.all();
+            model.put("news",news);
+            return new ModelAndView(model,"news.hbs");
+        }, new HandlebarsTemplateEngine() );
+        get("/special", (request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            List<Departmental>special = departmentalDao.all();
+            model.put("special",special);
+            return new ModelAndView(model,"special.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }

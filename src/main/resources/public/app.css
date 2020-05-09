@@ -1,0 +1,18 @@
+button{
+position:relative;
+font-family: 'Playfair Display', serif;
+color:black;
+}
+.container{
+padding : 200px 200px;
+border-radius : 25px;
+}
+body{
+text-align : center ;
+font-family: 'Playfair Display', serif;
+background-color : grey ;
+}
+textarea{
+width : 400px;
+height : 200px;
+}
