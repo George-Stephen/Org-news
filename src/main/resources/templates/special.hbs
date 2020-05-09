@@ -1,0 +1,19 @@
+{{#partial "content"}}
+    <table class="table">
+        <tr>
+            <th scope="col">author</th>
+            <th scope="col">news</th>
+            <th scope="col">Department Id</th>
+
+
+        </tr>
+        {{#each special}}
+            <tr>
+                <td>{{author}}</td>
+                <td>{{news}}</td>
+                <td>{{departmentId}}</td>
+            </tr>
+        {{/each}}
+    </table>
+{{/partial}}
+{{> layout.hbs}}

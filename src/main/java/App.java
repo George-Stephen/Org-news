@@ -29,7 +29,7 @@ public class App {
         newsDao = new Sql2oNewsDao(DB.sql2o);
         con = DB.sql2o.open();
 
-        // Users
+/*        // Users
        post("/users/new", "application/json", (request, response) -> {
             User user = gson.fromJson(request.body(), User.class);
             userDao.add(user);
@@ -134,7 +134,7 @@ public class App {
            response.type("application/json");
         });
 
-
+*/
 get("/",(request, response) -> {
     Map<Object,String>model = new HashMap<>();
     return new ModelAndView("model","index.hbs");
