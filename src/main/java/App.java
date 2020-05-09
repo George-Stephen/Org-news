@@ -166,7 +166,7 @@ get("/",(request, response) -> {
             int DepId = Integer.parseInt(request.queryParams("DepId"));
             User user = new User(name,email,phone,position,DepId);
             userDao.add(user);
-            return new ModelAndView(model,"employees.hbs");
+            return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
         post("/departments", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -175,7 +175,7 @@ get("/",(request, response) -> {
             int number = Integer.parseInt(request.queryParams("number"));
             Department department = new Department(name,story,number);
             departmentDao.add(department);
-            return new ModelAndView(model,"departments.hbs");
+            return new ModelAndView(model,"success.hbs");
         }, new HandlebarsTemplateEngine());
         post("/news",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -183,7 +183,7 @@ get("/",(request, response) -> {
             String news = request.queryParams("news");
             General general = new General(news,author);
             newsDao.add(general);
-            return new ModelAndView(model,"news.hbs");
+            return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
         post("/special",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -192,7 +192,7 @@ get("/",(request, response) -> {
             int DepId = Integer.parseInt(request.queryParams("depId"));
             Departmental departmental = new Departmental(news,author,DepId);
             departmentalDao.add(departmental);
-            return new ModelAndView(model,"special.hbs");
+            return new ModelAndView(model,"success.hbs");
         },new HandlebarsTemplateEngine());
         // display all data
         get("/departments",(request, response) -> {

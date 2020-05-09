@@ -6,11 +6,12 @@ color:black;
 .container{
 padding : 200px 200px;
 border-radius : 25px;
+background-color: grey;
 }
 body{
 text-align : center ;
 font-family: 'Playfair Display', serif;
-background-color : grey ;
+background-image : url("/images/1cd84761e613e417f08ea18f3586a884.jpg");
 }
 textarea{
 width : 400px;
