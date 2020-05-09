@@ -13,24 +13,13 @@
         <li role="presentation"><a href="/">Home</a></li>
         <li role="presentation"><a href="/departments">View all departments</a></li>
         <li role="presentation"><a href="/employees">View All employees</a></li>
-
-        <li role="presentation" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Forms Menu <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="/departments/new">Add a new department</a></li>
-                <li><a href="/employee/form">Add a new employee</a></li>
-            </ul>
-        </li>
+        <li role="presentation"><a href="/news">View All General news</a></li>
+        <li role="presentation"><a href="/special">View All Departmental news</a></li>
     </ul>
-    <div class="container-fluid">
         <div class="col-md-12">
             {{#block "content"}}
             {{/block}}
-
         </div>
-    </div>
     {{#block "footer"}}
         <footer class="footer">
             <div class="container">
