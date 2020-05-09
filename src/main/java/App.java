@@ -6,13 +6,14 @@ import  exceptions.*;
 import org.sql2o.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
+import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
-
+        staticFileLocation("/public");
         Sql2oUserDao userDao;
         Sql2oDepartmentDao departmentDao;
         Sql2oDepartmentalDao departmentalDao;
@@ -27,7 +28,7 @@ public class App {
         con = DB.sql2o.open();
 
         // Users
-        post("/users/new", "application/json", (request, response) -> {
+/*        post("/users/new", "application/json", (request, response) -> {
             User user = gson.fromJson(request.body(), User.class);
             userDao.add(user);
             response.status(201);
@@ -62,6 +63,22 @@ public class App {
                 throw new ApiException(404,String.format("No department with the id: \"%s\" exists",request.params("id")));
             }
             return gson.toJson(department);
+        });
+        get("/departments/:id/news","application/json",(request, response) -> {
+            int depId = Integer.parseInt(request.params("id"));
+            List<Departmental> allNews = departmentDao.allNewsbyId(depId);
+            if(allNews == null){
+                throw new ApiException(404,"No news has been recorded in the department");
+            }
+            return  gson.toJson(allNews);
+        });
+        get("/departments/:id/users","application/json",(request, response) -> {
+            int depId = Integer.parseInt(request.params("id"));
+            List<User>allUsers = departmentDao.allUsersbyId(depId);
+            if (allUsers == null){
+                throw new ApiException(404,"No members present in the department");
+            }
+            return gson.toJson(allUsers);
         });
         // general news
         post("/news/new","application/json",(request, response) -> {
@@ -114,6 +131,6 @@ public class App {
         after((request, response) -> {
            response.type("application/json");
         });
-
+*/
     }
 }
