@@ -1,0 +1,39 @@
+{{#partial "content"}}
+<div class="container">
+    <form action="/employees" method="post">
+        <div class="form-group">
+        <label for="name">Full Name :</label><br>
+        <input type="text" name="name" id="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address :</label><br>
+            <input type="email" name="email" id="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone number :</label><br>
+            <input type="text" name="phone" id="phone">
+        </div>
+        <div class="form-group">
+            <label for="position">Position in organisation :</label><br>
+            <select name="position">
+                <option>IT consultant</option>
+                <option>General manager</option>
+                <option>Marketing director</option>
+                <option>Financial manager</option>
+                <option>Secretary</option>
+                <option>Security</option>
+                <option>Product manager</option>
+                <option>Senior Employee</option>
+                <option>Junior Employee</option>
+                <option>Intern</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="depId">Department Id :</label><br>
+            <input type="number" name="DepId" id="DepId">
+        </div>
+        <button type="submit" class="btn btn-success">Submit form</button>
+    </form>
+</div>
+{{/partial}}
+{{> layout.hbs}}

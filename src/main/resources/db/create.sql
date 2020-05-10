@@ -1,28 +1,8 @@
-SET MODE PostgreSQL;
+CREATE DATABASE org_news ;
+\c org_news
 
-CREATE TABLE IF NOT EXISTS users(
-id int PRIMARY KEY auto_increment,
-Name VARCHAR,
-age int,
-email VARCHAR,
-phone VARCHAR,
-position VARCHAR,
-departmentsId int
-);
-CREATE TABLE IF NOT EXISTS departments(
-id int PRIMARY KEY auto_increment,
-Name VARCHAR,
-Description VARCHAR,
-Employees int
-);
-CREATE TABLE IF NOT EXISTS news(
-id int PRIMARY KEY auto_increment,
-news VARCHAR,
-author VARCHAR
-);
-CREATE TABLE IF NOT EXISTS departmentalNews(
-id int PRIMARY KEY auto_increment,
-news VARCHAR,
-author VARCHAR,
-departmentId int
-);
+CREATE TABLE users(id serial PRIMARY KEY , name VARCHAR, email VARCHAR, phone VARCHAR,position VARCHAR , departmentsid INT)
+CREATE TABLE news(id serial PRIMARY KEY, news VARCHAR , author VARCHAR);
+CREATE TABLE departments(id serial PRIMARY KEY , name VARCHAR , story VARCHAR, noofemployees int);
+CREATE TABLE departmental(id serial PRIMARY KEY , news VARCHAR, author VARCHAR, departmentid int );
+CREATE DATABASE org_news_test WITH TEMPLATE org_news;

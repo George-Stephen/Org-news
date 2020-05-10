@@ -1,0 +1,16 @@
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/Department.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/Sql2oDepartmentDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/exceptions/ApiException.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/DepartmentsDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/Sql2oUserDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/App.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/User.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/UserDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/Admin.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/Sql2oDepartmentalDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/General.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/Departmental.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/DB.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/newsDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/DepartmentalNewsDao.java
+/home/stevie-yazz/IdeaProjects/Org-news/src/main/java/models/dao/Sql2oNewsDao.java

@@ -1,0 +1,4 @@
+models/DepartmentTest.class
+models/dao/Sql2oUserDaoTest.class
+models/UserTest.class
+models/dao/Sql2oDepartmentDaoTest.class

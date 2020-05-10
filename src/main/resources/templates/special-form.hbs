@@ -1,0 +1,20 @@
+{{#partial "content"}}
+    <div class="container">
+        <form action="/special" method="post">
+            <div class="form-group">
+                <label for="author">Author of news :</label><br>
+                <input type="text" name="author" id="author">
+            </div>
+            <div class="form-group">
+                <label for="News">Notification/news :</label><br>
+                <textarea name="news" id="news"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="depId">Department Id :</label><br>
+                <input type="number" name="depId" id="depId">
+            </div>
+            <button type="submit" class="btn btn-success">Submit news</button>
+        </form>
+    </div>
+{{/partial}}
+{{> layout.hbs}}
