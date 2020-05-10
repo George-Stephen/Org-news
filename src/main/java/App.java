@@ -14,7 +14,15 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
 
 public class App {
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }
     public static void main(String[] args) {
+        port(getHerokuAssignedPort());
         staticFileLocation("/public");
         Sql2oUserDao userDao;
         Sql2oDepartmentDao departmentDao;
@@ -29,7 +37,7 @@ public class App {
         newsDao = new Sql2oNewsDao(DB.sql2o);
         con = DB.sql2o.open();
 
-/*        // Users
+        // Users
        post("/users/new", "application/json", (request, response) -> {
             User user = gson.fromJson(request.body(), User.class);
             userDao.add(user);
@@ -134,7 +142,7 @@ public class App {
            response.type("application/json");
         });
 
-*/
+
 get("/",(request, response) -> {
     Map<Object,String>model = new HashMap<>();
     return new ModelAndView("model","index.hbs");
