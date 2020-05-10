@@ -15,6 +15,15 @@ If you would like to use this application, Use the application link above in the
 Or git clone the repository
 Please ensure you have the required systems such as postgres installed before cloning the project
 To create the database required use the create.sql file in the resources/db folder 
+
+CREATE DATABASE org_news ;
+\c org_news
+
+CREATE TABLE users(id serial PRIMARY KEY , name VARCHAR, email VARCHAR, phone VARCHAR,position VARCHAR , departmentsid INT) ;
+CREATE TABLE news(id serial PRIMARY KEY, news VARCHAR , author VARCHAR);
+CREATE TABLE departments(id serial PRIMARY KEY , name VARCHAR , story VARCHAR, noofemployees int);
+CREATE TABLE departmental(id serial PRIMARY KEY , news VARCHAR, author VARCHAR, departmentid int );
+CREATE DATABASE org_news_test WITH TEMPLATE org_news;
  ## License 
  This application is protected by MIT  License
  MIT License
