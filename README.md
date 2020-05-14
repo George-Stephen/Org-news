@@ -29,6 +29,7 @@ departmental news : /special/news/:id ; <br/>
 users in a department : /departments/:id/users ; <br/>
 news of a individual department : /departments/:id/news ; <br/>
 all posting are in the format of
+input
 for users <br/>
 { <br/>
 name: "George stephen", <br/>
