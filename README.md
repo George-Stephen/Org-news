@@ -12,18 +12,44 @@ This application was created using : HTML, Java/Spark, CSS ,
 tools like HandleBars,Postgresql,GSON were a great help in finishing the project
 ## Setup
 If you would like to use this application, Use the application link above in the description
-Or git clone the repository
-Please ensure you have the required systems such as postgres installed before cloning the project
-To create the database required use the create.sql file in the resources/db folder 
+The routes to access the  general data are :<br/> /news for all general news,
+/users for all users , <br/>
+/departments for all departments , <br/> 
+/special for  all departmental  news recorded ; <br/>
+To post new users use the routes : <br/>
+new users :  /users/new; <br/>
+new departments : /department/new ; <br/>
+new general news: /news/new ; <br/>
+new departmental news : /special/news/new ; <br/>
+To view individual data for( replace the :id  with numbers representing the id of the data ) <br/>
+users : /users/:id ;<br/>
+departments : departments/:id ;<br/>
+news : /news/:id ; <br/>
+departmental news : /special/news/:id ; <br/>
+users in a department : /departments/:id/users ; <br/>
+news of a individual department : /departments/:id/news ; <br/>
+all posting are in the format of
+for users <br/>
+{ <br/>
+name: "George stephen", <br/>
+email: "yazz@gmail.com",<br/>
+phone: "1234567",<br/>
+departmentsId: "1" <br/>
+} <br/>
+for departments <br/>
+{ <br/>
+name: "Public relations", <br/>
+story: "We deal with interactions with the community", <br/>
+NoOfEmployees: "12" <br/>
+} <br/>
+CREATE DATABASE org_news ;  <br/>
+\c org_news <br/>
 
-CREATE DATABASE org_news ;
-\c org_news
-
-CREATE TABLE users(id serial PRIMARY KEY , name VARCHAR, email VARCHAR, phone VARCHAR,position VARCHAR , departmentsid INT) ;
-CREATE TABLE news(id serial PRIMARY KEY, news VARCHAR , author VARCHAR);
-CREATE TABLE departments(id serial PRIMARY KEY , name VARCHAR , story VARCHAR, noofemployees int);
-CREATE TABLE departmental(id serial PRIMARY KEY , news VARCHAR, author VARCHAR, departmentid int );
-CREATE DATABASE org_news_test WITH TEMPLATE org_news;
+CREATE TABLE users(id serial PRIMARY KEY , name VARCHAR, email VARCHAR, phone VARCHAR,position VARCHAR , departmentsid INT) ; <br/>
+CREATE TABLE news(id serial PRIMARY KEY, news VARCHAR , author VARCHAR); <br/>
+CREATE TABLE departments(id serial PRIMARY KEY , name VARCHAR , story VARCHAR, noofemployees int); <br/>
+CREATE TABLE departmental(id serial PRIMARY KEY , news VARCHAR, author VARCHAR, departmentid int ); <br/>
+CREATE DATABASE org_news_test WITH TEMPLATE org_news; <br/>
  ## License 
  This application is protected by MIT  License
  MIT License
