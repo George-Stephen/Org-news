@@ -1,6 +1,5 @@
-import models.dao.Sql2oNewsDao;
 import org.sql2o.*;
 
 public  class DB{
-    public static Sql2o sql2o = new Sql2o("jdbc:postgresql://ec2-34-192-30-15.compute-1.amazonaws.com:5432/dao7d1kv776ob1","kezopccvwbswzd","7a4fb74ddc7a64d6c6539bad720bce69b011a5638b6ace5c08ae0cfe64557e0f");
+    public static Sql2o sql2o = new Sql2o("jdbc:postgresql://ec2-3-91-139-25.compute-1.amazonaws.com:5432/d8k9e04osfauai","rykagtfhyruglv","b4267a8acdce72c24dc572ba719bb9d3912c68045f9b581db3d7c9a26acd6844");
 }
